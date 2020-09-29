@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import "./App.css";
+//COMPONENTS
+import Card from "./Card/Card";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="home__section">
+        <Card
+          src="https://a0.muscache.com/im/pictures/eb9c7c6a-ee33-414a-b1ba-14e8860d59b3.jpg?im_w=720"
+          title="Online Experiences"
+          description="September 11 | 9pm"
+          price="Free"
+        />
+        <Card
+          src="https://a0.muscache.com/im/pictures/eb9c7c6a-ee33-414a-b1ba-14e8860d59b3.jpg?im_w=720"
+          title="Online Experiences"
+          description="September 11 | 9pm"
+          price="$12 onwards"
+        />
+        <Card
+          src="https://a0.muscache.com/im/pictures/eb9c7c6a-ee33-414a-b1ba-14e8860d59b3.jpg?im_w=720"
+          title="Online Experiences"
+          description="September 11 | 9pm"
+          price="$12 onwards"
+        />
+      </div>
+      <div className="home__section">
+        <Card
+          src="https://a0.muscache.com/im/pictures/eb9c7c6a-ee33-414a-b1ba-14e8860d59b3.jpg?im_w=720"
+          title="Online Experiences"
+          description="September 11 | 9pm"
+          price="Free"
+        />
+        <Card
+          src="https://a0.muscache.com/im/pictures/eb9c7c6a-ee33-414a-b1ba-14e8860d59b3.jpg?im_w=720"
+          title="Online Experiences"
+          description="September 11 | 9pm"
+          price="$12 onwards"
+        />
+        <Card
+          src="https://a0.muscache.com/im/pictures/eb9c7c6a-ee33-414a-b1ba-14e8860d59b3.jpg?im_w=720"
+          title="Online Experiences"
+          description="September 11 | 9pm"
+          price="$12 onwards"
+        />
+      </div>
     </div>
   );
 }
