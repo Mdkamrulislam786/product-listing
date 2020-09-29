@@ -10,6 +10,7 @@ const Card = ({
   first_air_date,
   backdrop_path,
   vote_average,
+  type,
 }) => {
   return (
     <div className="card">
@@ -21,6 +22,9 @@ const Card = ({
         />
         <div className="middle">
           <div className="text">PLAY</div>
+        </div>
+        <div className="card__movieType">
+          <p>{type}</p>
         </div>
       </div>
       <div className="card__info">

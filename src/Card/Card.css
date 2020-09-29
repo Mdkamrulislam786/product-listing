@@ -60,6 +60,27 @@
 .container {
     position: relative;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.384);
+}
+
+.card__movieType {
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    right: 10px;
+    min-width: 6vw;
+    min-height: 25px;
+    background-color: rgb(163, 1, 1);
+    color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+    align-items: center;
+    padding: 0px 3px;
+    border-radius: 2px;
+}
+
+.card__movieType p {
+    font-size: 14px;
 }
 
 .image {
@@ -96,4 +117,17 @@
     color: white;
     font-size: 16px;
     padding: 16px 32px;
+    font-weight: 400;
+}
+
+@media(min-width:320px) and (max-width:480px) {
+    .card__movieType {
+        min-width: 6vw;
+        min-height: 20px;
+        padding: 4px;
+    }
+
+    .card__movieType p {
+        font-size: 12px;
+    }
 }

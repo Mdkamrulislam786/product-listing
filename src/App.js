@@ -6,7 +6,11 @@ import axios from "./axios";
 import Card from "./Card/Card";
 function App() {
   const [movies, setMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
   let fetchUrl = requests.fetchNetflixOriginals;
+  let trending = requests.fetchTrending;
+
+  //original movies
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
@@ -15,17 +19,27 @@ function App() {
     }
     fetchData();
   }, [fetchUrl]);
+  //trending movies
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(trending);
+      setTrendingMovies(request.data.results);
+      return request;
+    }
+    fetchData();
+  }, [trending]);
   console.log(movies);
+  console.log(trending);
   return (
     <div className="app">
       <div className="home__section">
         {movies.slice(0, 3).map((movie) => (
-          <Card key={movie.id} {...movie} price="Free" />
+          <Card key={movie.id} {...movie} type="Originals" />
         ))}
       </div>
       <div className="home__section">
-        {movies.slice(3, 6).map((movie) => (
-          <Card key={movie.id} {...movie} price="Free" />
+        {trendingMovies.slice(11, 14).map((movie) => (
+          <Card key={movie.id} {...movie} type="Trending" />
         ))}
       </div>
     </div>
