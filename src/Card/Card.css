@@ -65,7 +65,7 @@
     right: 10px;
     min-width: 6vw;
     min-height: 25px;
-    background-color: rgb(163, 1, 1);
+    background-color: rgb(158, 5, 5);
     color: #fff;
     font-weight: 400;
     text-transform: uppercase;
@@ -76,6 +76,7 @@
 
 .card__movieType p {
     font-size: 14px;
+    margin-bottom: 0;
 }
 
 .image {
