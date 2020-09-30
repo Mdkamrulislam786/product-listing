@@ -11,7 +11,12 @@ const Card = ({
   backdrop_path,
   vote_average,
   type,
+  loading,
 }) => {
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
   return (
     <div className="card">
       <div className="container">
@@ -34,7 +39,7 @@ const Card = ({
           <a href="#none">Watch on zoom</a>{" "}
         </h4>
         <div className="card__bottom">
-          <h4>imdb: {vote_average} </h4>
+          <h6>imdb: {vote_average} </h6>
           <IconButton>
             <FavoriteBorderIcon />
           </IconButton>

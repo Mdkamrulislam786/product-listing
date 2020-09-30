@@ -4,51 +4,51 @@ import requests from "./requests";
 import axios from "./axios";
 //COMPONENTS
 import Card from "./Card/Card";
+import BPagination from "./Pagination/Pagination";
+
 function App() {
-  const [movies, setMovies] = useState([]);
-  const [trendingMovies, setTrendingMovies] = useState([]);
   let fetchUrl = requests.fetchNetflixOriginals;
-  let trending = requests.fetchTrending;
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(6);
 
   //original movies
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       const request = await axios.get(fetchUrl);
       setMovies(request.data.results);
+      setLoading(false);
       return request;
     }
     fetchData();
   }, [fetchUrl]);
-  //trending movies
-  useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(trending);
-      setTrendingMovies(request.data.results);
-      return request;
-    }
-    fetchData();
-  }, [trending]);
-  console.log(movies);
-  console.log(trending);
+
+  //Get current posts
+  const indexOfLastPage = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPage - postsPerPage;
+  const currentPosts = movies.slice(indexOfFirstPost, indexOfLastPage);
+
+  //changepage
+  const paginate = (items) => {
+    return setCurrentPage(items);
+  };
+
   return (
     <div className="app">
       <div className="home__section">
-        {movies.slice(0, 3).map((movie) => (
-          <Card key={movie.id} {...movie} type="Originals" />
+        {currentPosts.map((movie) => (
+          <Card key={movie.id} {...movie} loading={loading} type="Originals" />
         ))}
       </div>
-      <div className="home__section">
-        {trendingMovies.slice(11, 14).map((movie) => (
-          <Card key={movie.id} {...movie} type="Trending" />
-        ))}
-      </div>
+      <BPagination
+        postsPerPage={postsPerPage}
+        totalPosts={movies.length}
+        paginate={paginate}
+      />
     </div>
   );
 }
 
 export default App;
-// src="https://a0.muscache.com/im/pictures/eb9c7c6a-ee33-414a-b1ba-14e8860d59b3.jpg?im_w=720"
-// title="Netflix Originals"
-// fetchUrl={requests.fetchNetflixOriginals}
-// price="Free"
-// description="September 11 | 9pm"
